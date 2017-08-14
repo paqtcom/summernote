@@ -6,7 +6,7 @@
 window.W2Summernote = function() {
     'use strict';
 
-    var version = '0.0.2';
+    var version = '0.0.3';
 
     var globals = {
         textarea: '.js-wysiwyg',
@@ -79,11 +79,41 @@ window.W2Summernote = function() {
         return this;
     }
 
+    /**
+     * Unset summernote.
+     */
+    function unset() {
+        $(globals.textarea).summernote('destroy');
+    }
+
+    /**
+     * Get the HTML contents of the first summernote in the set of matched elements.
+     *
+     * @return {string}
+     */
+    function get() {
+        return $(globals.textarea).summernote('code');
+    }
+
+    /**
+     * A string of HTML to set as the content of each matched element.
+     *
+     * @return {object}
+     */
+    function set() {
+        $(globals.textarea).summernote('code');
+
+        return this;
+    }
+
     return {
         init:    init,
         toolbar: setToolbar,
         element: setElement,
         height:  setHeight,
+        get:     get,
+        set:     set,
+        unset:   unset,
         version: version
     };
 };
