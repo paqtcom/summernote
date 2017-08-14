@@ -6,7 +6,7 @@
 window.W2Summernote = function() {
     'use strict';
 
-    var version = '0.0.1';
+    var version = '0.0.2';
 
     var globals = {
         textarea: '.js-wysiwyg',
@@ -25,7 +25,7 @@ window.W2Summernote = function() {
     /**
      * Attach summernote.
      *
-     @return {object}
+     * @return {object}
      */
     function init() {
         $(globals.textarea).each(function() {
@@ -44,27 +44,39 @@ window.W2Summernote = function() {
      * Overrule the default toolbars.
      *
      * @param {array} newToobar
+     *
+     * @return {object}
      */
     function setToolbar(newToobar) {
         toolbar = newToobar;
+
+        return this;
     }
 
     /**
      * Set the element.
      *
      * @param {string} element
+     *
+     * @return {object}
      */
     function setElement(element) {
         globals.textarea = element;
+
+        return this;
     }
 
     /**
      * Set the wysiwyg height.
      *
      * @param {int} height
+     *
+     * @return {object}
      */
     function setHeight(height) {
         globals.height = height;
+
+        return this;
     }
 
     return {
