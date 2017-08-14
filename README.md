@@ -2,8 +2,14 @@
 
 [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url]
 
+Example implementation:
+
 ```
-new W2Summernote().init();
+$('.js-wysiwyg').each(function() {
+    new W2Summernote()
+        .element($(this))
+        .init();
+});
 ```
 
 ## .init()

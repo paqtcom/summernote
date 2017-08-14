@@ -1,16 +1,18 @@
 /**
  * Way 2 Wummernote.
  *
+ * @param {object} element
+ *
  * @return {object}
  */
-window.W2Summernote = function() {
+window.W2Summernote = function(element) {
     'use strict';
 
-    var version = '0.0.5';
+    var version = '0.0.6';
 
     var globals = {
-        textarea: '.js-wysiwyg',
-        height:   300
+        element: element,
+        height:  300
     };
 
     var toolbar = [
@@ -28,13 +30,9 @@ window.W2Summernote = function() {
      * @return {object}
      */
     function init() {
-        $(globals.textarea).each(function() {
-            var elemEditor = $(this);
-
-            elemEditor.summernote({
-                height:  globals.height,
-                toolbar: toolbar
-            });
+        globals.element.summernote({
+            height:  globals.height,
+            toolbar: toolbar
         });
 
         return this;
@@ -56,12 +54,12 @@ window.W2Summernote = function() {
     /**
      * Set the element.
      *
-     * @param {string} element
+     * @param {object} element
      *
      * @return {object}
      */
     function setElement(element) {
-        globals.textarea = element;
+        globals.element = element;
 
         return this;
     }
@@ -83,7 +81,7 @@ window.W2Summernote = function() {
      * Unset summernote.
      */
     function unset() {
-        $(globals.textarea).summernote('destroy');
+        globals.element.summernote('destroy');
     }
 
     /**
@@ -92,16 +90,18 @@ window.W2Summernote = function() {
      * @return {string}
      */
     function get() {
-        return $(globals.textarea).summernote('code');
+        return globals.element.summernote('code');
     }
 
     /**
      * A string of HTML to set as the content of each matched element.
      *
+     * @param {string} code
+     *
      * @return {object}
      */
-    function set() {
-        $(globals.textarea).summernote('code');
+    function set(code) {
+        globals.element.summernote('code', code);
 
         return this;
     }
