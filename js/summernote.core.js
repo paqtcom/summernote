@@ -6,7 +6,7 @@
 window.W2Summernote = function() {
     'use strict';
 
-    var version = '0.0.3';
+    var version = '0.0.5';
 
     var globals = {
         textarea: '.js-wysiwyg',
