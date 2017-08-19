@@ -21,11 +21,16 @@ const paths = {
 
 export const folders = {
     scripts: `${paths.root}js/`,
+    styles: `${paths.root}css/`,
+    test: `${paths.root}test/`,
     npm: 'node_modules/'
 };
 
 export const dist = {
-    scripts: `${paths.dist}js/`
+    root: `${paths.dist}`,
+    scripts: `${paths.dist}js/`,
+    styles: `${paths.dist}css/`,
+    fonts: `${paths.dist}fonts/`
 };
 
 /*
@@ -41,8 +46,10 @@ export { packageOptions, gulpOptions };
 /*
  * Import all our tasks
  */
-import { lintScripts } from './gulp/lint';
+import { lintStyles, lintScripts } from './gulp/lint';
 import { scripts } from './gulp/scripts';
+import { styles } from './gulp/styles';
+import { copy } from './gulp/copy';
 import { clean } from './gulp/clean';
 import { bust } from './gulp/rev';
 import { modernizr } from './gulp/modernizr';
@@ -51,10 +58,18 @@ import { modernizr } from './gulp/modernizr';
  * Define the tasks
  */
 export const taskConfig = {
+    styles: [
+        new Task(
+            ['main.scss'],
+            folders.styles,
+            dist.styles + 'main.css'
+        )
+    ],
     scripts: [
         new Task(
             [
                 'jquery/dist/jquery.js',
+                'bootstrap-sass/assets/javascripts/bootstrap.min.js',
                 'summernote/dist/summernote.js',
             ],
             folders.npm,
@@ -68,6 +83,23 @@ export const taskConfig = {
             dist.scripts + 'app.js'
         )
     ],
+    copy: [
+        new Task(
+            ['bootstrap-sass/assets/fonts/**/*'],
+            folders.npm,
+            dist.fonts
+        ),
+        new Task(
+            ['summernote/dist/font/*'],
+            folders.npm,
+            dist.fonts + '/summernote'
+        ),
+        new Task(
+            ['*'],
+            folders.test,
+            dist.root
+        )
+    ],
 };
 
 /*
@@ -75,16 +107,17 @@ export const taskConfig = {
  */
 function watch() {
     gutil.env.continue = true;
+    gulp.watch(folders.styles + '**/*.{scss,css}', gulp.parallel(styles, lintStyles));
     gulp.watch(folders.scripts + '**/*.js', gulp.parallel(scripts, lintScripts));
 }
 
 /*
  * Combine tasks
  */
-const lint = gulp.parallel(lintScripts);
+const lint = gulp.parallel(lintStyles, lintScripts);
 const build = gulp.series(
     clean,
-    gulp.parallel(lint, scripts),
+    gulp.parallel(lint, styles, scripts, copy),
     bust
 );
 
@@ -94,9 +127,12 @@ const build = gulp.series(
 export {
     watch,
     build,
+    styles,
     scripts,
     lint,
+    lintStyles,
     lintScripts,
+    copy,
     modernizr
 };
 

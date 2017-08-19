@@ -4,6 +4,12 @@ import * as utilities from './utilities';
  * Default specfific package options
  */
 let packageOptions = {
+    postcssUrls: {
+        rules: [{
+            from: 'font/summernote',
+            to: '../fonts/summernote/summernote'
+        }]
+    },
     uglify: {
         options: {
             compress: {
@@ -17,6 +23,7 @@ let packageOptions = {
         'crawl': false
     }
 };
+
 
 /*
  * Default gulp options
