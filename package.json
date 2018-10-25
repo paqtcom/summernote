@@ -1,6 +1,6 @@
 {
     "name": "way2web-summernote",
-    "version": "0.0.7",
+    "version": "1.0.0",
     "description": "Way 2 Summernote.",
     "files": [
         "js/summernote.core.js"

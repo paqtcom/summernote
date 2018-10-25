@@ -8,7 +8,7 @@
 window.W2Summernote = function(element) {
     'use strict';
 
-    var version = '0.0.7';
+    var version = '1.0.0';
 
     var globals = {
         element: element,
