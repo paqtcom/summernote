@@ -69,8 +69,9 @@ export const taskConfig = {
         new Task(
             [
                 'jquery/dist/jquery.js',
-                'bootstrap-sass/assets/javascripts/bootstrap.min.js',
-                'summernote/dist/summernote.js',
+                'popper.js/dist/umd/popper.js',
+                'bootstrap/dist/js/bootstrap.js',
+                'summernote/dist/summernote-bs4.js',
             ],
             folders.npm,
             dist.scripts + 'vendor.js'
