@@ -8,7 +8,7 @@
 window.W2Summernote = function(element) {
     'use strict';
 
-    var version = '1.0.0';
+    var version = '1.1.0';
 
     var globals = {
         element: element,
@@ -117,3 +117,7 @@ window.W2Summernote = function(element) {
         version: version
     };
 };
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = window.W2Summernote;
+}
