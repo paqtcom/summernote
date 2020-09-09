@@ -5,14 +5,15 @@
  *
  * @return {object}
  */
-window.W2Summernote = function(element) {
+window.W2Summernote = function (element) {
     'use strict';
 
-    var version = '1.1.0';
+    var version = '1.2.0';
 
     var globals = {
         element: element,
-        height:  300
+        height: 300,
+        tooltip: true,
     };
 
     var toolbar = [
@@ -31,8 +32,9 @@ window.W2Summernote = function(element) {
      */
     function init() {
         globals.element.summernote({
-            height:  globals.height,
-            toolbar: toolbar
+            height: globals.height,
+            toolbar: toolbar,
+            tooltip: globals.tooltip,
         });
 
         return this;
@@ -107,13 +109,13 @@ window.W2Summernote = function(element) {
     }
 
     return {
-        init:    init,
+        init: init,
         toolbar: setToolbar,
         element: setElement,
-        height:  setHeight,
-        get:     get,
-        set:     set,
-        unset:   unset,
+        height: setHeight,
+        get: get,
+        set: set,
+        unset: unset,
         version: version
     };
 };
