@@ -47,6 +47,13 @@ Set the height of the summernote wysiwyg editor.
 Default value:
 `300`
 
+## .tooltip()
+
+Turn the tooltip on or off.
+
+Default value:
+`true`
+
 ## .get()
 
 Get the HTML contents of the first summernote in the set of matched elements.
