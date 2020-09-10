@@ -8,7 +8,7 @@
 window.W2Summernote = function (element) {
     'use strict';
 
-    var version = '1.2.0';
+    var version = '1.2.1';
 
     var globals = {
         element: element,
@@ -80,6 +80,19 @@ window.W2Summernote = function (element) {
     }
 
     /**
+     * Set the wysiwyg tooltip.
+     *
+     * @param {boolean} tooltip
+     *
+     * @return {object}
+     */
+    function setTooltip(tooltip) {
+        globals.tooltip = tooltip;
+
+        return this;
+    }
+
+    /**
      * Unset summernote.
      */
     function unset() {
@@ -113,6 +126,7 @@ window.W2Summernote = function (element) {
         toolbar: setToolbar,
         element: setElement,
         height: setHeight,
+        tooltip: setTooltip,
         get: get,
         set: set,
         unset: unset,
