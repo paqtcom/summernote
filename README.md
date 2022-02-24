@@ -1,3 +1,6 @@
+> **⚠ WARNING: No maintenance intended**  
+> This package is not actively maintained.
+
 # Way 2 Summernote
 
 [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url]
